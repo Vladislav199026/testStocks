@@ -1,0 +1,307 @@
+@import "./_reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#wrapper.darktheme {
+    background: rgb(41, 40, 40);
+    color: #fff;
+
+    .main {
+        .header {
+            &__controller {
+                input[type='text'],
+                input[type='number'] {
+                    background: transparent;
+                    color: #fff;
+        
+                    &:focus {
+                        outline: 1px solid #fff;
+                    }
+                }
+
+                input[type='button'] {
+                    color: #fff;
+
+                    &:hover {
+                        border-color: #fff;
+                    }
+                }
+            }
+        }
+    
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+    
+            &:after {
+                border: 6px solid #fff;
+                border-color: #fff transparent #fff transparent;
+              }
+          }
+    
+        .tickerList {
+            border: 1px solid rgb(201, 200, 200);
+        }
+    }
+}
+
+#wrapper {
+    min-height: 100vh;
+    padding: 15px;
+    position: relative;
+    overflow-x: hidden;
+
+    .main {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            
+            @media (min-width: 768px) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+    
+            &__controller {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                margin-bottom: 30px;
+                text-align: center;
+
+                @media (min-width: 968px) {
+                    text-align: left;
+                    width: 90%;
+                }
+                
+                input[type='button'],
+                input[type='text'],
+                input[type='number'] {
+                    border: 1px solid rgb(201, 200, 200);
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    margin: 0 0 15px;
+                    width: 100%;
+                    height: 50px;
+                    font-size: 18px;
+                    background: transparent;
+
+                    @media (min-width: 968px) {
+                        width: 300px;
+                        margin: 0 15px 15px 0;
+                    }
+        
+                    &:focus {
+                        outline: 1px solid #000;
+                        border-color: transparent;
+                    }
+
+                    &::placeholder {
+                        font-size: 18px;
+                        letter-spacing: 1px;
+                    }
+                }
+
+                input[type='number'] {
+                    @media (min-width: 508px) {
+                        width: calc(70% - 15px);
+                        margin-right: 15px;
+                    }
+
+                    @media (min-width: 968px) {
+                        width: 300px;
+                    }
+                }
+                
+                input[type='button'] {
+                    width: 100%;
+                    cursor: pointer;
+                    transition: .3s;
+
+                    @media (min-width: 508px) {
+                        width: 30%;
+                    }
+
+                    @media (min-width: 968px) {
+                        width: 150px;
+                    }
+
+                    &:hover {
+                        border-color: #000;
+                    }
+                }
+
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+        
+                strong {
+                    font-size: 18px;
+                    display: inline-block;
+                    margin-right: 15px;
+                }
+            }
+        
+            &__theme {
+                .toggleBtn {
+                    position: relative;
+                    margin-bottom: 15px;
+                    width: 60px;
+                    padding: 0 4px;
+                    height: 30px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    border: 1px solid #000;
+                    border-radius: 60px;
+                    transition: background-color .2s ease-in-out;
+                    will-change: background-color;
+            
+                    &:hover {
+                        cursor: pointer;
+                        
+                        .toggleBtn__toggler {
+                            background-color: #fff;
+                            border: 1px solid #000;
+                        }
+                    }
+            
+                    img {
+                        width: 20px;
+                    }
+            
+                    .toggleBtn__toggler {
+                        position: absolute;
+                        left: -2px;
+                        height: 30px;
+                        width: 30px;
+                        background-color: darkblue;
+                        border: 1px solid #fff;
+                        border-radius: inherit;
+                        transition: transform .4s ease-in-out, background-color .1s ease-in-out;
+                        will-change: transform, background-color;
+                    }
+                }
+            
+                .active {
+                    background-color: #000;
+                    border-color: #fff;
+            
+                    .toggleBtn__toggler {
+                        transform: translateX(100%);
+                    }
+                }
+            }
+        }
+    
+        h1 {
+            text-transform: capitalize;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+    
+        .hidden {
+            display: none;
+        }
+    
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+    
+            &:after {
+                content: " ";
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: 8px;
+                border-radius: 50%;
+                border: 6px solid #000;
+                border-color: #000 transparent #000 transparent;
+                animation: ldsdualring 1.2s linear infinite;
+              }
+          }
+    
+          @keyframes ldsdualring {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+    
+        .tickerList {
+            border: 1px solid rgb(201, 200, 200);
+            border-radius: 15px;
+            overflow: hidden;
+            
+            & > li {
+                border-bottom: 1px solid rgb(201, 200, 200);
+    
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+    
+            &__inner {
+                padding: 0 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+    
+                & > li {
+                    width: calc(50% - 15px);
+                    padding: 15px 0;
+                    margin-right: 15px;
+                    text-transform: capitalize;
+                    font-weight: 300;
+                    line-height: 24px;
+                    word-break: break-word;
+
+                    @media (min-width: 508px) {
+                        width: calc(100% / 3 - 15px);
+                    }
+
+                    @media (min-width: 768px) {
+                        width: calc(100% / 5 - 15px);
+                    }
+    
+                    &:first-child {
+                        border-left: none;
+                        margin-left: 0;
+                    }
+    
+                    strong {
+                        font-weight: 500;
+                    }
+
+                    .markRed strong {
+                        color: red
+                    }
+
+                    .markGreen strong {
+                        color: green
+                    }
+                }
+            }
+        }
+    }
+}
