@@ -28,6 +28,6 @@ const ToggleBtn = () => {
             <div className='toggleBtn__toggler'></div>
         </button>
     )
-}
+};
 
 export default ToggleBtn;

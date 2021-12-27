@@ -3,7 +3,6 @@ import './assets/scss/main.scss';
 import AllStocks from './components/AllStocks/AllStocks';
 import { ThemeContext } from './components/ThemeContext/ThemeContext';
 
-
 function App() {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;

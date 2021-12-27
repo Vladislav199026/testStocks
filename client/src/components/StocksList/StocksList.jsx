@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function StocksList({isLoaded, dat, searchValue}) {
+function StocksList({isLoaded, searchValue, listState}) {
     return (
         <>
-            {isLoaded && dat.filter(value => {
+            {isLoaded && listState.filter(value => {
                 if (searchValue == '') {
                     return value;
                 } else if (value.ticker.toLowerCase().includes(searchValue.toLowerCase())) {
@@ -43,7 +43,7 @@ function StocksList({isLoaded, dat, searchValue}) {
 
 StocksList.propTypes = {
     isLoaded: PropTypes.bool,
-    dat: PropTypes.array,
+    listState: PropTypes.array,
     searchValue: PropTypes.string
 };
 
