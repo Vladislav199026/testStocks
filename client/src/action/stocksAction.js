@@ -1,10 +1,10 @@
-import { FETCH_LOADING, FETCH_SUCCESS} from '../constans'
+import { REQUEST_LOADING, REQUEST_SUCCESS} from '../constans'
 
-export const fetchPostsLoading = () => ({
-    type: FETCH_LOADING,
+export const requestLoading = () => ({
+    type: REQUEST_LOADING,
 });
 
-export const fetchPostsSuccess = (payload) => ({
-    type: FETCH_SUCCESS,
+export const requestSuccess = (payload) => ({
+    type: REQUEST_SUCCESS,
     payload
 });

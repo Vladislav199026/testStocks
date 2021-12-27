@@ -1,17 +1,17 @@
-import { FETCH_LOADING, FETCH_SUCCESS } from '../constans';
+import { REQUEST_LOADING, REQUEST_SUCCESS } from '../constans';
 
 const initialState = {
     coins: [],
 };
 
-const reducer = (state = initialState, action) => {
+const stockReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_LOADING:
+        case REQUEST_LOADING:
             return {
                 coins: [...state.coins]
             };
 
-        case FETCH_SUCCESS:
+        case REQUEST_SUCCESS:
             return {
                 coins: action.payload,
             };
@@ -20,4 +20,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+export default stockReducer;

@@ -3,10 +3,10 @@ import io from 'socket.io-client';
 import HeaderController from '../HeaderController/HeaderController';
 import Spinner from '../Spinner/Spinner';
 import StocksList from '../StocksList/StocksList';
-import { fetchPostsLoading, fetchPostsSuccess } from '../../action/stocksAction';
+import { requestLoading, requestSuccess } from '../../action/stocksAction';
 import { useSelector, useDispatch } from 'react-redux';
 
-export let fetchPostsRequest = null;
+export let requestData = null;
 
 function AllStocks() {
     const [socket, setSocket] = useState(null);
@@ -22,16 +22,17 @@ function AllStocks() {
         setSocket(io('http://localhost:4000'));
     }, [intervalValue])
 
-    useEffect(fetchPostsRequest = () => {
+    useEffect(requestData = () => {
         if (!socket) return;
 
         socket.on('connect', () => {
             start();
-            dispatch(fetchPostsLoading());
+
+            dispatch(requestLoading());
         });
 
         socket.on('ticker', data => {
-            dispatch(fetchPostsSuccess(data));
+            dispatch(requestSuccess(data));
 
             setLoad(true);
         });
